@@ -89,10 +89,43 @@ int main() {
         times[1][2] = -1; // set is alr sorted
     }
 
+
+    // ********************* RACE 3 *************************
+    {
+        vector<string> v = lines;
+        clock_t start = clock();
+
+        v.insert(v.begin() + v.size()/2, "abc");
+        clock_t end = clock();
+        times[2][0] = (long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+    }
+
+    {
+        list<string> l(lines.begin(), lines.end());
+
+        
+        clock_t start = clock();
+        list<string>::iterator it = l.begin();
+        for (size_t i = 0; i < l.size()/2; ++i) ++it;
+        l.insert(it, "TESTCODE");
+        clock_t end = clock();
+        times[2][1] = (long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+        
+    }
+
+    {
+        set<string> s(lines.begin(), lines.end());
+        clock_t start = clock();
+        s.insert("TESTCODE");
+        clock_t end = clock();
+        times[2][2] = (long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+    }
+
+
     // output
-    cout << "V " << times[1][0] << endl;
-    cout << "L " << times[1][1] << endl;
-    cout << "S " << times[1][2] << endl;
+    cout << "V " << times[2][0] << endl;
+    cout << "L " << times[2][1] << endl;
+    cout << "S " << times[2][2] << endl;
 
 
 
