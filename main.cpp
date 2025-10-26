@@ -66,13 +66,33 @@ int main() {
         clock_t end = clock();
         times[0][2] = (long long)(long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
     }
-    // ********************* RACE 2 *************************
 
+
+    // ********************* RACE 2 *************************
+    {
+        vector<string> v = lines;
+        clock_t start = clock();
+        sort(v.begin(), v.end());
+        clock_t end = clock();
+        times[1][0] = (long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+    }
+
+    {
+        list<string> l(lines.begin(), lines.end());
+        clock_t start = clock();
+        l.sort();
+        clock_t end = clock();
+        times[1][1] = (long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+    }
+
+    {
+        times[1][2] = -1; // set is alr sorted
+    }
 
     // output
-    cout << "V " << times[0][0] << endl;
-    cout << "L " << times[0][1] << endl;
-    cout << "S " << times[0][2] << endl;
+    cout << "V " << times[1][0] << endl;
+    cout << "L " << times[1][1] << endl;
+    cout << "S " << times[1][2] << endl;
 
 
 
