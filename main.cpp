@@ -29,8 +29,8 @@ int main() {
     // 3 containers and 4 racers -> 4 by 3 array
     long long times[4][3];
 
-    // race 1 reading
-
+  
+    // ********************* RACE 1 *************************
     // vector!!
     {
         clock_t start = clock();
@@ -44,24 +44,41 @@ int main() {
     }
 
     // list!!
-    clock_t start = clock();
-    list<string> l;
+    {
+        clock_t start = clock();
+        list<string> l;
 
-    for (size_t i = 0; i < lines.size(); i++)
-        l.push_back(lines[i]);
-        
-    clock_t end = clock();
-    times[0][1] = (long long)(long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+        for (size_t i = 0; i < lines.size(); i++)
+            l.push_back(lines[i]);
+            
+        clock_t end = clock();
+        times[0][1] = (long long)(long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+    }
 
     // set!!
-    clock_t start = clock();
-    set<string> s;
+    {
+        clock_t start = clock();
+        set<string> s;
 
-    for (size_t i = 0; i < lines.size(); i++)
-        l.push_back(lines[i]);
-        
-    clock_t end = clock();
-    times[0][2] = (long long)(long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+        for (size_t i = 0; i < lines.size(); i++)
+            s.insert(lines[i]);
+            
+        clock_t end = clock();
+        times[0][2] = (long long)(long long)((end - start) * 1000000 / CLOCKS_PER_SEC);
+    }
+    // ********************* RACE 2 *************************
+
+
+    // output
+    cout << "V " << times[0][0] << endl;
+    cout << "L " << times[0][1] << endl;
+    cout << "S " << times[0][2] << endl;
+
+
+
+
+
+
 
     
 
